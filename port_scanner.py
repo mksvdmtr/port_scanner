@@ -1,6 +1,7 @@
 import socket
 import sys
 import validators
+from colored import fg, attr, stylize
 
 usage = """
 Usage:
@@ -19,9 +20,10 @@ if len(sys.argv) == 3:
         socket.setdefaulttimeout(3)
         res = s.connect_ex((ip,int(port)))
         if res == 0:
-            print(f"Port {port} is open")
+            #print(f"Port {port} is open")
+            print(stylize(f"Port {port} is open", fg("green") + attr("bold")))
         else:
-            print(f"Port {port} is closed")
+            print(stylize(f"Port {port} is closed", fg("red") + attr("bold")))
 else:
     print(usage)
 
